@@ -38,4 +38,26 @@
     
   </entry>
   
+  <entry>
+    <title>如何在linux下配置AndroidStudio开发环境</title>
+    <link href="http://yoursite.com/2016/04/28/20160428-%E5%A6%82%E4%BD%95%E5%9C%A8linux%E4%B8%8B%E9%85%8D%E7%BD%AEAndroidStudio%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    <id>http://yoursite.com/2016/04/28/20160428-如何在linux下配置AndroidStudio开发环境/</id>
+    <published>2016-04-28T02:12:41.000Z</published>
+    <updated>2019-10-09T15:51:46.131Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-选择linux系统"><a href="#1-选择linux系统" class="headerlink" title="1.选择linux系统"></a><strong>1.选择linux系统</strong></h2><p>个人比较推荐国产的UbuntuKylin，目前最新的系统已经更新到16.04了，这个系统集合了原生Ubuntu系统的优点，有具有中国特色，比较适合国人使用。还有一个国产系统比较推荐，就是deepin，目前已经跟新到15.1.1，这个系统界面真心不错。<br>这两个系统都内嵌了使用人群基数最大的搜狗输入法，解决了最基本的文字输入问题，qq和微信都能使用，解决了基本沟通问题。废话不多说，首先看一下怎么<strong>制作linux系统U盘启动盘</strong>。deepin可以使用官方系统文件deepin-boot-maker-1.0.exe制作，具体教程请自行百度，这里不在赘述。<br>这里主要以UbuntuKylin系统为例子(这里下载：<a href="http://www.ubuntukylin.com/downloads/download.php?id=38" target="_blank" rel="noopener">64位</a>,<a href="http://www.ubuntukylin.com/downloads/download.php?id=37" target="_blank" rel="noopener">32位</a>，给大家介绍一下如何在linux下配置Android Studio。<br>系统文件.iso下载完毕以后，下载u盘制作工具Rufus进行制作（<a href="http://rufus.akeo.ie/downloads/rufus-2.8.exe" target="_blank" rel="noopener">下载Rufus</a>），这个工具比较推荐，本人使用其他u盘制作工具，一直没安装成功，最后使用Rufus（制作过程中，会提示要下载两个小文件，同意即可）终于完美解决。界面比较简单，具体操作流程软件打开以后一目了然，不细说。</p><h2 id="2-安装jdk及配置环境变量"><a href="#2-安装jdk及配置环境变量" class="headerlink" title="2.安装jdk及配置环境变量"></a><strong>2.安装jdk及配置环境变量</strong></h2><p>jdk当然要安装linux版本的（这里选用<a href="http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz" target="_blank" rel="noopener">1.7版本</a>的）,下载完毕，进行解压，然后配置环境变量，打开终端或者使用快捷键ctrl+alt+T，输入一下命令：</p><pre><code>$sudo gedit ~/.bashrc</code></pre><p>在打开的文件末尾添加以下代码：</p><pre><code>JAVA_HOME=/usr/lib/jvm/jdk1.7.0_79JRE_HOME=${JAVA_HOME}/jreCLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/libPATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就配置完毕了</p><h2 id="3-安装Android-Studio"><a href="#3-安装Android-Studio" class="headerlink" title="3.安装Android Studio"></a><strong>3.安装Android Studio</strong></h2><p>下载<a href="https://dl.google.com/dl/android/studio/ide-zips/2.0.0.20/android-studio-ide-143.2739321-linux.zip" target="_blank" rel="noopener">android studio 2.0</a>,这个版本不带sdk，所以安装完毕后，需要在android的studio中下载sdk。文件下载完成后，可以看到是一个.zip文件，直接解压提取文件，然后在/android-studio/bin中可以看到有一个文件叫做“studio.sh”,这个文件就是android studio的可执行文件，相当于windows中的.exe文件。但是默认是不能直接执行的，所以需要<strong>在/android-studio/bin目录下打开终端，输入以下命令，执行.sh文件</strong>：</p><pre><code>sh studio.sh</code></pre><p>耐心等待几秒钟后，就会看到android studio熟悉的安装界面，按照步骤一步一步执行，就能完成android studio的安装，然后像在windows平台一样安装sdk，不再废话。</p><h2 id="4-安装Genymotion和virtualbox"><a href="#4-安装Genymotion和virtualbox" class="headerlink" title="4.安装Genymotion和virtualbox"></a><strong>4.安装Genymotion和virtualbox</strong></h2><p>android studio安装完毕以后，如果能有一个android模拟器像windows下的Genymotion一样就好了。幸运的是，在Genymotion真的有了linux版本。<a href="http://files2.genymotion.com/genymotion/genymotion-2.6.0/genymotion-2.6.0-ubuntu15_x64.bin" target="_blank" rel="noopener">点此下载Genymotion</a><br>下载完毕后，大家发现是一个.bin文件，是不能直接打开运行的，这时候需要在下载目录中打开终端输入一下命令</p><pre><code>chmod +x genymotion-2.6.0-ubuntu15_x64.bin</code></pre><p>接着用下面的命令执行即可：</p><pre><code>./genymotion-2.6.0-ubuntu15_x64.bin</code></pre><p><strong>如果电脑里边没有安装virtualbox</strong>，Genymotion是不能成功运行的，所以在运行Genymotion之前需要<a href="http://download.virtualbox.org/virtualbox/5.0.18/virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb" target="_blank" rel="noopener">安装virtualbox</a>,virtualbox下载完毕后，发现这是一个.deb文件，如果电脑安装了Ubuntu Software,可以双击直接运行，否则，需要打开终端输入一下命令进行安装：</p><pre><code>sudo dpkg -i virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb</code></pre><p>安装完成后，就可以正常使用Genymotion了。</p><hr><p>到这里，在linux下配置Android Studio开发环境已经结束，可以享受愉快地开发过程了。</p><hr><p><strong><em>时间匆忙没来的及截图，全是文字性叙述，谢谢各位朋友坚持读完。关于linux下配置AS有任何问题，请及时与我联系，我们共同探讨。</em></strong><br>另将文中软件下载地址一并放到这里：</p><pre><code>1.UbuntuKylin系统    64位，http://www.ubuntukylin.com/downloads/download.php?id=38    32位，http://www.ubuntukylin.com/downloads/download.php?id=372.u盘制作工具Rufus    http://rufus.akeo.ie/downloads/rufus-2.8.exe3.jdk1.7(linux版本)    http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz4.android studio 2.0(linux版本)    https://dl.google.com/dl/android/studio/ide-zips/2.0.0.20/android-studio-ide-143.2739321-linux.zip5.Genymotion(linux版本)    http://files2.genymotion.com/genymotion/genymotion-2.6.0/genymotion-2.6.0-ubuntu15_x64.bin6.virtualbox((linux版本)    http://download.virtualbox.org/virtualbox/5.0.18/virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb</code></pre><p>注：本文首发于<a href="https://blog.csdn.net/edius12/article/details/51272140" target="_blank" rel="noopener">https://blog.csdn.net/edius12/article/details/51272140</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-选择linux系统&quot;&gt;&lt;a href=&quot;#1-选择linux系统&quot; class=&quot;headerlink&quot; title=&quot;1.选择linux系统&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.选择linux系统&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;个人比较推荐国产的UbuntuKy
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
 </feed>
