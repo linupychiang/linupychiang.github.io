@@ -56,29 +56,43 @@
   };
 </script>
 
-  <meta name="keywords" content="wanpython, Python, Hadoop, 爬虫, 数据分析, 机器学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wanpython">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="一、服务端配置比如说想把服务端的目录/var/test共享给其他电脑 （1）首先安装nfs组件1yum install nfs-utils -y   （2）配置共享目录打开/etc/exports文件 1vi /etc/exports  配置如下信息 1/var/test *(rw,sync,no_root_squash)  其中：   /var/test：是要共享的目录   *：是指将目录共享给">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单实现linux挂载网络文件目录">
+<meta property="og:url" content="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/index.html">
 <meta property="og:site_name" content="wanpython">
+<meta property="og:description" content="一、服务端配置比如说想把服务端的目录/var/test共享给其他电脑 （1）首先安装nfs组件1yum install nfs-utils -y   （2）配置共享目录打开/etc/exports文件 1vi /etc/exports  配置如下信息 1/var/test *(rw,sync,no_root_squash)  其中：   /var/test：是要共享的目录   *：是指将目录共享给">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="https://img-blog.csdn.net/20180107173733925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="https://img-blog.csdn.net/20180107173750082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="https://img-blog.csdn.net/20180107173816265?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:updated_time" content="2019-10-12T16:00:03.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wanpython">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="简单实现linux挂载网络文件目录">
+<meta name="twitter:description" content="一、服务端配置比如说想把服务端的目录/var/test共享给其他电脑 （1）首先安装nfs组件1yum install nfs-utils -y   （2）配置共享目录打开/etc/exports文件 1vi /etc/exports  配置如下信息 1/var/test *(rw,sync,no_root_squash)  其中：   /var/test：是要共享的目录   *：是指将目录共享给">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  <link rel="canonical" href="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>wanpython</title>
+  <title>简单实现linux挂载网络文件目录 | wanpython</title>
   
 
 
@@ -202,93 +216,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linupy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/android-chrome-512x512.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wanpython">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-28 16:42:44" itemprop="dateCreated datePublished" datetime="2019-09-28T16:42:44+08:00">2019-09-28</time>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -301,9 +235,8 @@
       <meta itemprop="name" content="wanpython">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/01/07/简单实现linux挂载网络文件目录/" class="post-title-link" itemprop="url">简单实现linux挂载网络文件目录</a>
+        <h1 class="post-title" itemprop="name headline">简单实现linux挂载网络文件目录
+
           
         </h1>
 
@@ -345,7 +278,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="一、服务端配置"><a href="#一、服务端配置" class="headerlink" title="一、服务端配置"></a>一、服务端配置</h3><p>比如说想把服务端的目录/var/test共享给其他电脑</p>
+        <h3 id="一、服务端配置"><a href="#一、服务端配置" class="headerlink" title="一、服务端配置"></a>一、服务端配置</h3><p>比如说想把服务端的目录/var/test共享给其他电脑</p>
 <h4 id="（1）首先安装nfs组件"><a href="#（1）首先安装nfs组件" class="headerlink" title="（1）首先安装nfs组件"></a>（1）首先安装nfs组件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nfs-utils -y</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
@@ -401,157 +334,56 @@
 <p>（4）nfs服务开机自启配置和开机自动挂载配置</p>
 <p>注：本文首发于<a href="https://blog.csdn.net/edius12/article/details/78996015" target="_blank" rel="noopener">https://blog.csdn.net/edius12/article/details/78996015</a></p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/linux/" rel="tag"># linux</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2016/04/28/如何在linux下配置AndroidStudio开发环境/" rel="next" title="如何在linux下配置AndroidStudio开发环境">
+                  <i class="fa fa-chevron-left"></i> 如何在linux下配置AndroidStudio开发环境
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/09/28/hello-world/" rel="prev" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/28/如何在linux下配置AndroidStudio开发环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linupy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/android-chrome-512x512.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wanpython">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2016/04/28/如何在linux下配置AndroidStudio开发环境/" class="post-title-link" itemprop="url">如何在linux下配置AndroidStudio开发环境</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2016-04-28 10:12:41" itemprop="dateCreated datePublished" datetime="2016-04-28T10:12:41+08:00">2016-04-28</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-10 00:17:31" itemprop="dateModified" datetime="2019-10-10T00:17:31+08:00">2019-10-10</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/android/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-选择linux系统"><a href="#1-选择linux系统" class="headerlink" title="1.选择linux系统"></a><strong>1.选择linux系统</strong></h2><p>个人比较推荐国产的UbuntuKylin，目前最新的系统已经更新到16.04了，这个系统集合了原生Ubuntu系统的优点，有具有中国特色，比较适合国人使用。还有一个国产系统比较推荐，就是deepin，目前已经跟新到15.1.1，这个系统界面真心不错。<br>这两个系统都内嵌了使用人群基数最大的搜狗输入法，解决了最基本的文字输入问题，qq和微信都能使用，解决了基本沟通问题。废话不多说，首先看一下怎么<strong>制作linux系统U盘启动盘</strong>。deepin可以使用官方系统文件deepin-boot-maker-1.0.exe制作，具体教程请自行百度，这里不在赘述。<br>这里主要以UbuntuKylin系统为例子(这里下载：<a href="http://www.ubuntukylin.com/downloads/download.php?id=38" target="_blank" rel="noopener">64位</a>,<a href="http://www.ubuntukylin.com/downloads/download.php?id=37" target="_blank" rel="noopener">32位</a>，给大家介绍一下如何在linux下配置Android Studio。<br>系统文件.iso下载完毕以后，下载u盘制作工具Rufus进行制作（<a href="http://rufus.akeo.ie/downloads/rufus-2.8.exe" target="_blank" rel="noopener">下载Rufus</a>），这个工具比较推荐，本人使用其他u盘制作工具，一直没安装成功，最后使用Rufus（制作过程中，会提示要下载两个小文件，同意即可）终于完美解决。界面比较简单，具体操作流程软件打开以后一目了然，不细说。</p>
-<h2 id="2-安装jdk及配置环境变量"><a href="#2-安装jdk及配置环境变量" class="headerlink" title="2.安装jdk及配置环境变量"></a><strong>2.安装jdk及配置环境变量</strong></h2><p>jdk当然要安装linux版本的（这里选用<a href="http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz" target="_blank" rel="noopener">1.7版本</a>的）,下载完毕，进行解压，然后配置环境变量，打开终端或者使用快捷键ctrl+alt+T，输入一下命令：</p>
-<pre><code>$sudo gedit ~/.bashrc</code></pre><p>在打开的文件末尾添加以下代码：</p>
-<pre><code>JAVA_HOME=/usr/lib/jvm/jdk1.7.0_79
-JRE_HOME=${JAVA_HOME}/jre
-CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
-PATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就配置完毕了</p>
-<h2 id="3-安装Android-Studio"><a href="#3-安装Android-Studio" class="headerlink" title="3.安装Android Studio"></a><strong>3.安装Android Studio</strong></h2><p>下载<a href="https://dl.google.com/dl/android/studio/ide-zips/2.0.0.20/android-studio-ide-143.2739321-linux.zip" target="_blank" rel="noopener">android studio 2.0</a>,这个版本不带sdk，所以安装完毕后，需要在android的studio中下载sdk。文件下载完成后，可以看到是一个.zip文件，直接解压提取文件，然后在/android-studio/bin中可以看到有一个文件叫做“studio.sh”,这个文件就是android studio的可执行文件，相当于windows中的.exe文件。但是默认是不能直接执行的，所以需要<strong>在/android-studio/bin目录下打开终端，输入以下命令，执行.sh文件</strong>：</p>
-<pre><code>sh studio.sh</code></pre><p>耐心等待几秒钟后，就会看到android studio熟悉的安装界面，按照步骤一步一步执行，就能完成android studio的安装，然后像在windows平台一样安装sdk，不再废话。</p>
-<h2 id="4-安装Genymotion和virtualbox"><a href="#4-安装Genymotion和virtualbox" class="headerlink" title="4.安装Genymotion和virtualbox"></a><strong>4.安装Genymotion和virtualbox</strong></h2><p>android studio安装完毕以后，如果能有一个android模拟器像windows下的Genymotion一样就好了。幸运的是，在Genymotion真的有了linux版本。<a href="http://files2.genymotion.com/genymotion/genymotion-2.6.0/genymotion-2.6.0-ubuntu15_x64.bin" target="_blank" rel="noopener">点此下载Genymotion</a><br>下载完毕后，大家发现是一个.bin文件，是不能直接打开运行的，这时候需要在下载目录中打开终端输入一下命令</p>
-<pre><code>chmod +x genymotion-2.6.0-ubuntu15_x64.bin</code></pre><p>接着用下面的命令执行即可：</p>
-<pre><code>./genymotion-2.6.0-ubuntu15_x64.bin</code></pre><p><strong>如果电脑里边没有安装virtualbox</strong>，Genymotion是不能成功运行的，所以在运行Genymotion之前需要<a href="http://download.virtualbox.org/virtualbox/5.0.18/virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb" target="_blank" rel="noopener">安装virtualbox</a>,virtualbox下载完毕后，发现这是一个.deb文件，如果电脑安装了Ubuntu Software,可以双击直接运行，否则，需要打开终端输入一下命令进行安装：</p>
-<pre><code>sudo dpkg -i virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb</code></pre><p>安装完成后，就可以正常使用Genymotion了。</p>
-<hr>
-<p>到这里，在linux下配置Android Studio开发环境已经结束，可以享受愉快地开发过程了。</p>
-<hr>
-<p><strong><em>时间匆忙没来的及截图，全是文字性叙述，谢谢各位朋友坚持读完。关于linux下配置AS有任何问题，请及时与我联系，我们共同探讨。</em></strong><br>另将文中软件下载地址一并放到这里：</p>
-<pre><code>1.UbuntuKylin系统
-    64位，http://www.ubuntukylin.com/downloads/download.php?id=38
-    32位，http://www.ubuntukylin.com/downloads/download.php?id=37
-2.u盘制作工具Rufus
-    http://rufus.akeo.ie/downloads/rufus-2.8.exe
-3.jdk1.7(linux版本)
-    http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz
-4.android studio 2.0(linux版本)
-    https://dl.google.com/dl/android/studio/ide-zips/2.0.0.20/android-studio-ide-143.2739321-linux.zip
-5.Genymotion(linux版本)
-    http://files2.genymotion.com/genymotion/genymotion-2.6.0/genymotion-2.6.0-ubuntu15_x64.bin
-6.virtualbox((linux版本)
-    http://download.virtualbox.org/virtualbox/5.0.18/virtualbox-5.0_5.0.18-106667~Ubuntu~xenial_amd64.deb</code></pre><p>注：本文首发于<a href="https://blog.csdn.net/edius12/article/details/51272140" target="_blank" rel="noopener">https://blog.csdn.net/edius12/article/details/51272140</a></p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
@@ -570,6 +402,11 @@ PATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就�
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -582,6 +419,8 @@ PATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、服务端配置"><span class="nav-number">1.</span> <span class="nav-text">一、服务端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）首先安装nfs组件"><span class="nav-number">1.1.</span> <span class="nav-text">（1）首先安装nfs组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）配置共享目录"><span class="nav-number">1.2.</span> <span class="nav-text">（2）配置共享目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）启动服务"><span class="nav-number">1.3.</span> <span class="nav-text">（3）启动服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、客户端配置"><span class="nav-number">2.</span> <span class="nav-text">二、客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）客户端首先也要安装nfs组件"><span class="nav-number">2.1.</span> <span class="nav-text">（1）客户端首先也要安装nfs组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）客户端挂载服务端文件目录"><span class="nav-number">2.2.</span> <span class="nav-text">（2）客户端挂载服务端文件目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、实现开机服务自启和自动挂载"><span class="nav-number">3.</span> <span class="nav-text">三、实现开机服务自启和自动挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）服务自启"><span class="nav-number">3.1.</span> <span class="nav-text">（1）服务自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）自动挂载"><span class="nav-number">3.2.</span> <span class="nav-text">（2）自动挂载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、简单总结"><span class="nav-number">4.</span> <span class="nav-text">四、简单总结</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -763,14 +602,6 @@ window.addEventListener('pjax:success', () => {
 
   
 
-  
-    
-      
-    
-      
-    
-      
-    
   
 
   
