@@ -60,25 +60,25 @@
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单实现linux挂载网络文件目录">
-<meta property="og:url" content="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/01/07/linux_nfs/index.html">
 <meta property="og:site_name" content="wanpython">
 <meta property="og:description" content="一、服务端配置比如说想把服务端的目录/var/test共享给其他电脑 （1）首先安装nfs组件1yum install nfs-utils -y   （2）配置共享目录打开/etc/exports文件 1vi /etc/exports  配置如下信息 1/var/test *(rw,sync,no_root_squash)  其中：   /var/test：是要共享的目录   *：是指将目录共享给">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134010.png">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
-<meta property="og:image" content="https://img-blog.csdn.net/20180107173733925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134023.png">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
-<meta property="og:image" content="https://img-blog.csdn.net/20180107173750082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134029.png">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
-<meta property="og:image" content="https://img-blog.csdn.net/20180107173816265?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134035.png">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
-<meta property="og:updated_time" content="2019-10-12T16:00:03.368Z">
+<meta property="og:updated_time" content="2020-01-01T13:41:54.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单实现linux挂载网络文件目录">
 <meta name="twitter:description" content="一、服务端配置比如说想把服务端的目录/var/test共享给其他电脑 （1）首先安装nfs组件1yum install nfs-utils -y   （2）配置共享目录打开/etc/exports文件 1vi /etc/exports  配置如下信息 1/var/test *(rw,sync,no_root_squash)  其中：   /var/test：是要共享的目录   *：是指将目录共享给">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-  <link rel="canonical" href="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/">
+<meta name="twitter:image" content="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134010.png">
+  <link rel="canonical" href="http://yoursite.com/2018/01/07/linux_nfs/">
 
 
 <script id="page-configurations">
@@ -223,7 +223,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/简单实现linux挂载网络文件目录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/linux_nfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linupy">
@@ -262,7 +262,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-13 00:00:03" itemprop="dateModified" datetime="2019-10-13T00:00:03+08:00">2019-10-13</time>
+                <time title="修改时间：2020-01-01 21:41:54" itemprop="dateModified" datetime="2020-01-01T21:41:54+08:00">2020-01-01</time>
               </span>
             
           
@@ -281,7 +281,7 @@
         <h3 id="一、服务端配置"><a href="#一、服务端配置" class="headerlink" title="一、服务端配置"></a>一、服务端配置</h3><p>比如说想把服务端的目录/var/test共享给其他电脑</p>
 <h4 id="（1）首先安装nfs组件"><a href="#（1）首先安装nfs组件" class="headerlink" title="（1）首先安装nfs组件"></a>（1）首先安装nfs组件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nfs-utils -y</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdn.net/20180107173629586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p><img src="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134010.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
 <h4 id="（2）配置共享目录"><a href="#（2）配置共享目录" class="headerlink" title="（2）配置共享目录"></a>（2）配置共享目录</h4><p>打开/etc/exports文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/exports</span><br></pre></td></tr></table></figure>
 
@@ -300,7 +300,7 @@
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move">       此时可以使用如下命令查看可以挂载的目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount -e localhost</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdn.net/20180107173733925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p><img src="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134023.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
 <p>如果以后修改了exports文件，只重启nfs服务即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nfs restart</span><br></pre></td></tr></table></figure>
 
@@ -310,7 +310,7 @@
 <p>此时可以查看服务端共享的目录了（192.168.6.23为服务端ip地址）</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount –e 192.168.6.23</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdn.net/20180107173750082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p><img src="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134029.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
 <h4 id="（2）客户端挂载服务端文件目录"><a href="#（2）客户端挂载服务端文件目录" class="headerlink" title="（2）客户端挂载服务端文件目录"></a>（2）客户端挂载服务端文件目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t nfs 192.168.6.23:/var/test /test</span><br></pre></td></tr></table></figure>
 
 <p>此时客户端配置已经完成</p>
@@ -318,7 +318,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /test</span><br></pre></td></tr></table></figure>
 
 <p>但是，需要注意取消挂载命令，不能在挂载目录使用，会显示device is busy</p>
-<p><img src="https://img-blog.csdn.net/20180107173816265?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWRpdXMxMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
+<p><img src="http://linupyoos.oss-cn-beijing.aliyuncs.com/blogs/2020-01-01-134035.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="Click and drag to move"></p>
 <h3 id="三、实现开机服务自启和自动挂载"><a href="#三、实现开机服务自启和自动挂载" class="headerlink" title="三、实现开机服务自启和自动挂载"></a>三、实现开机服务自启和自动挂载</h3><p>以上配置在系统重启后会失效，所以需要配置服务自启和自动挂载</p>
 <h4 id="（1）服务自启"><a href="#（1）服务自启" class="headerlink" title="（1）服务自启"></a>（1）服务自启</h4><p>可以使用chkconfig命令将某个服务设置为开机自动启动</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig nfs on</span><br></pre></td></tr></table></figure>
@@ -358,7 +358,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2016/04/28/如何在linux下配置AndroidStudio开发环境/" rel="next" title="如何在linux下配置AndroidStudio开发环境">
+                <a href="/2016/04/28/linux_androidstudio/" rel="next" title="如何在linux下配置AndroidStudio开发环境">
                   <i class="fa fa-chevron-left"></i> 如何在linux下配置AndroidStudio开发环境
                 </a>
               
@@ -367,6 +367,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/27/python-vim/" rel="prev" title="天作之合—— Python-Vim">
+                  天作之合—— Python-Vim <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -433,7 +437,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -442,7 +446,7 @@
       
       <div class="site-state-item site-state-categories">
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         
       </div>
@@ -455,7 +459,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -494,7 +498,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
