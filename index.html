@@ -208,6 +208,124 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/recover_deleted_files_in_linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linupy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/android-chrome-512x512.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wanpython">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/01/02/recover_deleted_files_in_linux/" class="post-title-link" itemprop="url">如何恢复linux上被删除的文件</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-02 22:00:57 / 修改时间：22:46:04" itemprop="dateCreated datePublished" datetime="2020-01-02T22:00:57+08:00">2020-01-02</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-误删除文件进程不在的情况"><a href="#1-误删除文件进程不在的情况" class="headerlink" title="1. 误删除文件进程不在的情况"></a>1. 误删除文件进程不在的情况</h3><p>情景再现：误删目录：/mnt/wushan/wushan1.txt 以及/mnt/wushan/wushan2.txt</p>
+<h4 id="设置删除文件分区写保护"><a href="#设置删除文件分区写保护" class="headerlink" title="设置删除文件分区写保护"></a>设置删除文件分区写保护</h4><p>当误删文件进程不在的情况下，首先应该卸载删除文件所在分区，或者将删除文件所在上层目录权限设置为只读，总之对分区设置写保护（防止新写入对数据覆盖误删的数据）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 444  /mnt</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装恢复工具"><a href="#安装恢复工具" class="headerlink" title="安装恢复工具"></a>安装恢复工具</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下载工具</span><br><span class="line">wget https://nchc.dl.sourceforge.net/project/extundelete/extundelete/0.2.4/extundelete-0.2.4.tar.bz2</span><br><span class="line"><span class="meta">#</span> 解压</span><br><span class="line">tar jxvf extundelete-0.2.4.tar.bz2 </span><br><span class="line"><span class="meta">#</span> 安装</span><br><span class="line">cd  extundelete-0.2.4</span><br><span class="line">./configure </span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"><span class="meta">#</span> 安装依赖</span><br><span class="line">yum -y install gcc-c++ e2fsprogs.x86_64 e2fsprogs-devel.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>验证安装结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> extundelete -v</span><br><span class="line">extundelete version 0.2.4</span><br><span class="line">libext2fs version 1.42.9</span><br><span class="line">Processor is little endian.</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看误删目录inode"><a href="#查看误删目录inode" class="headerlink" title="查看误删目录inode"></a>查看误删目录inode</h4><p>cd到误删文件到目录中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ls -id ./</span><br><span class="line">139372 ./</span><br></pre></td></tr></table></figure>
+
+<p>执行命令发现误删文件所在目录的inode是139372</p>
+<p>使用 <code>df -h</code> 命令查看所在目录的分区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> df -h</span><br><span class="line">...</span><br><span class="line">/dev/vdb1       394G  138G  237G  37% /mnt</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="开始恢复文件"><a href="#开始恢复文件" class="headerlink" title="开始恢复文件"></a>开始恢复文件</h4><p><strong>注意：恢复文件不可以在误删文件所在分区进行</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">extundelete /dev/vdb1 --inode 139372</span><br><span class="line">WARNING: EXT3_FEATURE_INCOMPAT_RECOVER is set.</span><br><span class="line">The partition should be unmounted to undelete any files without further data loss.</span><br><span class="line">If the partition is not currently mounted, this message indicates </span><br><span class="line">it was improperly unmounted, and you should run fsck before continuing.</span><br><span class="line">If you decide to continue, extundelete may overwrite some of the deleted</span><br><span class="line">files and make recovering those files impossible.  You should unmount the</span><br><span class="line">file system and check it with fsck before using extundelete.</span><br><span class="line">Would you like to continue? (y/n) </span><br><span class="line">y</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">File name	 | Inode number | Deleted status</span><br><span class="line">.					139372</span><br><span class="line">..					139371</span><br><span class="line">wushan1.txt			139373       Deleted</span><br><span class="line">wushan1.txt			139374       Deleted</span><br></pre></td></tr></table></figure>
+
+<p>可以看到被删除的文件了</p>
+<p>按照删除的文件名恢复</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extundelete /dev/vdb1 --restore-file /wushan1.txt</span><br></pre></td></tr></table></figure>
+
+<p>每次执行的时候，会有提示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NOTICE: Extended attributes are not restored.</span><br><span class="line">WARNING: EXT3_FEATURE_INCOMPAT_RECOVER is set.</span><br><span class="line">The partition should be unmounted to undelete any files without further data loss.</span><br><span class="line">If the partition is not currently mounted, this message indicates </span><br><span class="line">it was improperly unmounted, and you should run fsck before continuing.</span><br><span class="line">If you decide to continue, extundelete may overwrite some of the deleted</span><br><span class="line">files and make recovering those files impossible.  You should unmount the</span><br><span class="line">file system and check it with fsck before using extundelete.</span><br><span class="line">Would you like to continue? (y/n)</span><br></pre></td></tr></table></figure>
+
+<p>直接 <code>y</code> 即可，如果文件过多，可以使用下面的命令，自动输入 <code>y</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo y | extundelete /dev/vdb1 --restore-file wushan1.txt</span><br><span class="line">echo y | extundelete /dev/vdb1 --restore-file wushan2.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="还可以这样（未亲测，谨慎使用）"><a href="#还可以这样（未亲测，谨慎使用）" class="headerlink" title="还可以这样（未亲测，谨慎使用）"></a>还可以这样（未亲测，谨慎使用）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 恢复文件夹</span><br><span class="line">extundelete  /dev/vdb1  --restore-directory /mnt</span><br><span class="line"><span class="meta">#</span> 恢复/data目录下所有数据</span><br><span class="line">extundelete  /dev/vdb1 --restore-all</span><br><span class="line"><span class="meta">#</span> 按照时间恢复</span><br><span class="line">extundelete  --after 1379146740 --restore-all /dev/vdb1</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-误删除文件进程还在的情况"><a href="#2-误删除文件进程还在的情况" class="headerlink" title="2. 误删除文件进程还在的情况"></a>2. 误删除文件进程还在的情况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pass</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/01/build_gitlab_server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1035,7 +1153,7 @@ PATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就�
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1044,7 +1162,7 @@ PATH=${JAVA_HOME}/bin:$PATH</code></pre><p>到此为止，jdk的环境变量就�
       
       <div class="site-state-item site-state-categories">
         
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span>
         
       </div>
@@ -1214,6 +1332,8 @@ window.addEventListener('pjax:success', () => {
   
 
   
+    
+      
     
       
     
